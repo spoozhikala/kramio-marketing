@@ -1,24 +1,117 @@
-const faqs = [
+type FAQ = {
+  q: string;
+  a: React.ReactNode;
+};
+
+const faqs: FAQ[] = [
   {
     q: "Is my data and are my interactions secure?",
-    a: "Kramio is designed for sensitive workflows. It uses security-first patterns and controlled access so your context and activity are protected. The platform supports Bring Your Own Key (BYOK), so you retain control over model access."
+    a: (
+      <>
+        Kramio is designed for sensitive workflows. It uses security-first
+        patterns and controlled access so your context and activity are
+        protected. The platform supports Bring Your Own Key (BYOK), so you
+        retain control over model access.
+      </>
+    ),
   },
   {
     q: "Do you store my API keys?",
-    a: "Kramio supports BYOK. Keys are handled with an encryption-first approach so plaintext keys are not stored or exposed in logs. You can rotate or revoke keys at any time."
+    a: (
+      <>
+        Kramio supports BYOK. Keys are handled with an encryption-first approach
+        so plaintext keys are not stored or exposed in logs. You can rotate or
+        revoke keys at any time.
+      </>
+    ),
   },
   {
     q: "How do I sign in?",
-    a: "Click Sign In and authenticate using Google (Gmail) SSO. Access is currently invite-only for beta users."
+    a: (
+      <>
+        Click <span className="font-semibold text-neutral-200">Sign In</span> and
+        authenticate using Google (Gmail) SSO. Access is currently invite-only
+        for beta users.
+      </>
+    ),
   },
   {
-    q: "How do I get an OpenAI API key?",
-    a: "You can create and manage your OpenAI API key from the OpenAI platform dashboard. Once created, paste the key into Kramio Settings to enable OpenAI models."
+    q: "How do I get API keys?",
+    a: (
+      <>
+        <p className="text-neutral-300">
+          You can generate API keys directly from the AI providers you choose to
+          use with Kramio:
+        </p>
+
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-neutral-300">
+          <li>
+            <span className="font-semibold text-neutral-200">
+              Google Gemini (Gemini 2.5 Pro)
+            </span>{" "}
+            —{" "}
+            <a
+              className="underline decoration-neutral-500 underline-offset-4 hover:text-white"
+              href="https://ai.google.dev/gemini-api/docs/api-key"
+              target="_blank"
+              rel="noreferrer"
+            >
+              get an API key from Google AI Studio
+            </a>
+            .
+          </li>
+          <li>
+            <span className="font-semibold text-neutral-200">
+              OpenAI (ChatGPT-4o)
+            </span>{" "}
+            —{" "}
+            <a
+              className="underline decoration-neutral-500 underline-offset-4 hover:text-white"
+              href="https://auth.openai.com/create-account"
+              target="_blank"
+              rel="noreferrer"
+            >
+              create an OpenAI account and generate an API key
+            </a>
+            .
+          </li>
+          <li>
+            <span className="font-semibold text-neutral-200">xAI (Grok-4)</span>{" "}
+            —{" "}
+            <a
+              className="underline decoration-neutral-500 underline-offset-4 hover:text-white"
+              href="https://x.ai/api"
+              target="_blank"
+              rel="noreferrer"
+            >
+              generate an API key from the xAI platform
+            </a>
+            .
+          </li>
+        </ul>
+
+        <p className="mt-4 text-neutral-300">
+          Once created, paste your API key(s) into{" "}
+          <span className="font-semibold text-neutral-200">
+            Kramio AI Settings (BYOK)
+          </span>{" "}
+          to enable your tiles. You only need{" "}
+          <span className="font-semibold text-neutral-200">one</span> model API
+          key to start experiencing Kramio.
+        </p>
+      </>
+    ),
   },
   {
     q: "Which AI models do you support?",
-    a: "Kramio supports multiple AI providers through its orchestration layer, including OpenAI, Google Gemini, Anthropic, and xAI, depending on availability and your configured keys."
-  }
+    a: (
+      <>
+        Kramio supports multiple AI providers through its orchestration layer,
+        including OpenAI, Google Gemini, and xAI, depending on
+        availability and your configured keys.
+      </>
+    ),
+  },
 ];
 
 export default function FAQPage() {
@@ -38,11 +131,11 @@ export default function FAQPage() {
             >
               <summary className="cursor-pointer list-none text-lg font-semibold">
                 {item.q}
-                <span className="float-right text-neutral-400 group-open:rotate-180 transition">
+                <span className="float-right text-neutral-400 transition group-open:rotate-180">
                   ▼
                 </span>
               </summary>
-              <p className="mt-3 text-neutral-300">{item.a}</p>
+              <div className="mt-3 text-neutral-300">{item.a}</div>
             </details>
           ))}
         </div>
