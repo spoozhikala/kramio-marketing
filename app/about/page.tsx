@@ -1,6 +1,42 @@
+const APP_SIGNIN_URL = "https://kramio-frontend-670239159166.us-central1.run.app/";
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
+      {/* Top Nav (same as Home) */}
+      <header className="border-b border-neutral-900/60">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <a href="/" className="flex items-center gap-4">
+            <img
+              src="/kramio-logo.png"
+              alt="Kramio logo"
+              className="h-16 w-auto"
+            />
+            <span className="text-2xl font-semibold tracking-tight">Kramio</span>
+          </a>
+
+          <nav className="hidden gap-8 text-sm text-neutral-300 md:flex">
+            <a className="hover:text-white" href="/">
+              Home
+            </a>
+            <a className="hover:text-white" href="/about">
+              About
+            </a>
+            <a className="hover:text-white" href="/faq">
+              FAQ
+            </a>
+          </nav>
+
+          <a
+            className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
+            href={APP_SIGNIN_URL}
+          >
+            Sign In
+          </a>
+        </div>
+      </header>
+
+      {/* Page content */}
       <div className="mx-auto max-w-5xl px-6 py-16">
         <h1 className="text-4xl font-semibold tracking-tight">About Kramio</h1>
 
@@ -12,20 +48,30 @@ export default function AboutPage() {
         </p>
 
         <p className="mt-4 text-neutral-300">
-          We have spent years implementing security-by-design architectures,
-          data governance, access controls, and compliance-aligned workflows
-          across jurisdictions. Kramio exists because modern AI is powerful,
-          but most tools are not structured, governed, or safe enough for
-          serious work.
+          The team behind Kramio has deep experience implementing
+          security-by-design architectures, data governance frameworks, and
+          privacy-aligned workflows across geographies and regulated domains.
+          Kramio exists because modern AI is powerful, but most tools are not
+          structured, governed, or safe enough for serious work.
         </p>
 
         <p className="mt-4 text-neutral-300">
           Our goal is to make AI useful, controllable, and trustworthy for
-          prosumers and professionals alike—so you can bring your knowledge and
-          context into every session, without repeatedly rebuilding the setup.
+          prosumers and professionals alike—so your knowledge and context are
+          preserved across sessions, without repeatedly rebuilding the setup.
         </p>
 
-        {/* Expanded philosophy section (Jensen concept, non-quoted) */}
+        {/* Investor support */}
+        <p className="mt-4 text-neutral-300">
+          <span className="font-semibold text-neutral-200">
+            Kramio is supported by experienced angel investors from the Silicon
+            Valley technology ecosystem
+          </span>
+          , who bring decades of experience building, scaling, and operating
+          technology platforms.
+        </p>
+
+        {/* Expanded philosophy section */}
         <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
           <h2 className="text-xl font-semibold">
             The shift toward generated, on-demand software
@@ -33,28 +79,25 @@ export default function AboutPage() {
 
           <p className="mt-3 text-neutral-300">
             A major shift is underway: software is moving from static,
-            pre-written applications toward systems that can generate solutions
-            on demand. Instead of installing an app that was designed years
-            ago, users increasingly expect intelligent software to assemble the
-            right tools and workflows in real time—based on the problem, the
-            context, and the desired outcome.
+            pre-written applications toward systems that generate solutions on
+            demand. Instead of installing an app designed years ago, users
+            increasingly expect intelligent software to assemble workflows in
+            real time—based on the problem, the context, and the desired outcome.
           </p>
 
           <p className="mt-3 text-neutral-300">
-            Technology leaders, including NVIDIA CEO Jensen Huang, have
-            described this direction as a future where AI-driven systems
-            “assemble” solutions dynamically—often through coordinated agents
-            and model services—rather than relying only on fixed, manually
-            written interfaces. In this view, software becomes more personal,
-            more situational, and sometimes even ephemeral: generated when
-            needed, then adapted or replaced as the task changes.
+            Technology leaders have described this direction as a future where
+            AI-driven systems dynamically assemble solutions through coordinated
+            models and services. In this world, software becomes more personal,
+            situational, and adaptive—generated when needed and reshaped as the
+            task evolves.
           </p>
 
           <p className="mt-3 text-neutral-300">
-            Kramio is built for that future. Your work is organized into
-            context-aware tiles, your information is handled securely, and you
-            can evaluate multiple models in parallel—so you can generate
-            high-quality outputs on demand, with governance and continuity.
+            Kramio is built for that future. Work is organized into
+            context-aware tiles, privacy is enforced by default, and multiple
+            models can be evaluated in parallel—so high-quality outputs are
+            generated on demand, with continuity and control.
           </p>
         </div>
 

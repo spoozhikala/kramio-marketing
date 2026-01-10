@@ -31,7 +31,7 @@ export default function HomePage() {
             </a>
           </nav>
 
-          {/* Sign In */}
+          {/* Sign In (returning users) */}
           <a
             className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
             href={APP_SIGNIN_URL}
@@ -42,7 +42,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section className="mx-auto max-w-6xl px-6 py-16">
         {/* Two-column hero: main message + right rail */}
         <div className="grid gap-10 md:grid-cols-12 md:items-start">
           {/* Left: headline + core value */}
@@ -53,8 +53,8 @@ export default function HomePage() {
 
             <p className="mt-6 text-lg text-neutral-300">
               Kramio is a secure, context-aware AI workspace that applies your
-              knowledge, needs, and expertise—so intelligence is shaped around how
-              you think and work, delivering precise, task-ready answers.
+              knowledge, needs, and expertise—so intelligence is shaped around
+              how you think and work, delivering precise, task-ready answers.
             </p>
 
             <p className="mt-4 text-neutral-200">
@@ -70,7 +70,7 @@ export default function HomePage() {
                 className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
                 href={APP_SIGNIN_URL}
               >
-                Sign In (Beta)
+                Start free trial
               </a>
               <a
                 className="rounded-xl border border-neutral-700 px-5 py-3 text-sm font-semibold text-neutral-100 hover:bg-neutral-900"
@@ -78,6 +78,55 @@ export default function HomePage() {
               >
                 Read the FAQ
               </a>
+            </div>
+
+            {/* Trial reassurance strip */}
+            <div className="mt-6 flex flex-col gap-2 text-sm text-neutral-300 sm:flex-row sm:items-center sm:gap-6">
+              <div className="flex items-center gap-2">
+                <span className="text-neutral-200">✓</span>
+                <span>3-day free trial</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-neutral-200">✓</span>
+                <span>No credit card required</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-neutral-200">✓</span>
+                <span>No API keys needed</span>
+              </div>
+            </div>
+
+            {/* Workspace quick-jump chips (visibility above the fold) */}
+            <div className="mt-6">
+              <div className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
+                Explore workspaces
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <a
+                  href="#workspaces"
+                  className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
+                >
+                  Personal Intelligence
+                </a>
+                <a
+                  href="#workspaces"
+                  className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
+                >
+                  Medical Specialized
+                </a>
+                <a
+                  href="#workspaces"
+                  className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
+                >
+                  Real Estate Suite
+                </a>
+                <a
+                  href="#workspaces"
+                  className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
+                >
+                  Sales Professional
+                </a>
+              </div>
             </div>
           </div>
 
@@ -99,120 +148,164 @@ export default function HomePage() {
                   Compare answers across models, then continue with the model—or
                   models—that are on the right track.
                 </p>
+                <p className="mt-3 text-sm text-neutral-300">
+                  <span className="font-semibold text-neutral-200">
+                    Your identity is never shared
+                  </span>{" "}
+                  with AI providers.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Workspaces (moved before capabilities) */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-            <h3 className="text-lg font-semibold">Personal Workspace</h3>
-            <p className="mt-2 text-neutral-300">
-              Intelligence tailored for everyday decisions and personal
-              workflows.
-            </p>
-            <ul className="mt-4 list-disc space-y-1 pl-5 text-neutral-300">
-              <li>
-                <span className="font-semibold text-neutral-200">My Home</span>{" "}
-                — diagnostics, maintenance, and planning
-              </li>
-              <li>
-                <span className="font-semibold text-neutral-200">
-                  My Health &amp; Fitness
-                </span>{" "}
-                — wellness insights and preventive guidance
-              </li>
-              <li>
-                <span className="font-semibold text-neutral-200">
-                  My Monthly Cashflow
-                </span>{" "}
-                — clarity on income, expenses, and trends
-              </li>
-              <li>
-                <span className="font-semibold text-neutral-200">Scratchpad</span>{" "}
-                — a general-purpose executive assistant
-              </li>
-            </ul>
-            <p className="mt-4 text-neutral-300">
-              Designed to remember your context and evolve with you over time.
+        {/* Suites Grid */}
+        <div id="workspaces" className="mt-14 scroll-mt-24">
+          <div className="max-w-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight">
+              Choose your workspace
+            </h2>
+            <p className="mt-3 text-neutral-300">
+              Personal intelligence for life. Professional suites for your role.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-            <h3 className="text-lg font-semibold">Professional Workspace</h3>
-            <p className="mt-2 text-neutral-300">
-              Role-based intelligence built for depth, rigor, and continuity.
-            </p>
-            <ul className="mt-4 list-disc space-y-1 pl-5 text-neutral-300">
-              <li>
-                <span className="font-semibold text-neutral-200">
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {/* Personal Intelligence */}
+            <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+              <h3 className="text-lg font-semibold">Personal Intelligence</h3>
+              <p className="mt-2 text-neutral-300">
+                Everyday decisions, organized context, faster answers.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Health &amp; Fitness
+                </span>
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Cashflow Analysis
+                </span>
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Home Improvement
+                </span>
+              </div>
+              <p className="mt-4 text-sm text-neutral-400">
+                More tiles are actively in development.
+              </p>
+            </div>
+
+            {/* Medical Specialized */}
+            <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+              <h3 className="text-lg font-semibold">Medical Specialized</h3>
+              <p className="mt-2 text-neutral-300">
+                Evidence-first support for clinical workflows.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
                   Patient Diagnosis
                 </span>
-              </li>
-              <li>
-                <span className="font-semibold text-neutral-200">
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
                   Disease Research
                 </span>
-              </li>
-              <li>
-                <span className="font-semibold text-neutral-200">
-                  Medicine Analysis
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Medication Analysis
                 </span>
-              </li>
-              <li>
-                <span className="font-semibold text-neutral-200">
-                  Professional Scratchpad
+              </div>
+              <p className="mt-4 text-sm text-neutral-400">
+                More tiles are actively in development.
+              </p>
+            </div>
+
+            {/* Real Estate Suite */}
+            <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+              <h3 className="text-lg font-semibold">Real Estate Suite</h3>
+              <p className="mt-2 text-neutral-300">
+                Valuation, contracts, and listings—one guided workflow.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Property Valuation
                 </span>
-              </li>
-            </ul>
-            <p className="mt-4 text-neutral-300">
-              More professional roles and tiles are actively in development.
-            </p>
-            <p className="mt-2 text-neutral-300">
-              <span className="font-semibold text-neutral-200">
-                Sales and Real Estate workflows
-              </span>{" "}
-              are coming next.
-            </p>
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Lease Contract Review
+                </span>
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Listing Generator
+                </span>
+              </div>
+              <p className="mt-4 text-sm text-neutral-400">
+                More tiles are actively in development.
+              </p>
+            </div>
+
+            {/* Sales Professional */}
+            <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+              <h3 className="text-lg font-semibold">Sales Professional</h3>
+              <p className="mt-2 text-neutral-300">
+                Research, proposals, and deal strategy in one place.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Client Research
+                </span>
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Proposal Generation
+                </span>
+                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
+                  Deal Closure
+                </span>
+              </div>
+              <p className="mt-4 text-sm text-neutral-400">
+                More tiles are actively in development.
+              </p>
+            </div>
+          </div>
+
+          {/* Reinforcing CTA after suites */}
+          <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h3 className="text-lg font-semibold">
+                  Ready to try Kramio for your workflow?
+                </h3>
+                <p className="mt-2 text-neutral-300">
+                  Start your 3-day free trial. No credit card required.
+                </p>
+              </div>
+              <a
+                className="inline-flex w-fit items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
+                href={APP_SIGNIN_URL}
+              >
+                Start free trial
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Capabilities (moved after workspaces) */}
+        {/* Capabilities */}
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
             <h3 className="text-lg font-semibold">Context Engineering</h3>
             <p className="mt-2 text-neutral-300">
-              Your context—documents, images, and files—is securely organized
-              and reused across sessions, so you never have to re-explain
-              yourself.
-            </p>
-            <p className="mt-3 text-neutral-300">
-              Kramio automatically sends the right context at the right time.
+              Your documents, images, and files are structured and reused
+              automatically—so every session starts informed, without
+              re-explaining or re-uploading.
             </p>
           </div>
 
           <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
             <h3 className="text-lg font-semibold">Multi-Model Evaluation</h3>
             <p className="mt-2 text-neutral-300">
-              Run the same task across multiple AI models, compare their
-              reasoning side-by-side, and continue with the model—or models—
-              that are on the right track.
-            </p>
-            <p className="mt-3 text-neutral-300">
-              You stay in control of how intelligence progresses.
+              Compare answers across multiple AI models side-by-side, then
+              continue with the model—or models—that are on the right track.
             </p>
           </div>
 
           <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-            <h3 className="text-lg font-semibold">Governed Security (BYOK)</h3>
+            <h3 className="text-lg font-semibold">Privacy-First Orchestration</h3>
             <p className="mt-2 text-neutral-300">
-              Bring your own API keys and retain full control with an
-              encryption-first design built for sensitive and professional
-              workloads.
-            </p>
-            <p className="mt-3 text-neutral-300">
-              Your keys. Your data. Your governance.
+              Kramio provides managed access to leading AI models while keeping
+              your identity private. Personal identifiers are removed before
+              requests are sent to models.
             </p>
           </div>
         </div>

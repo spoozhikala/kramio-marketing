@@ -1,3 +1,5 @@
+const APP_SIGNIN_URL = "https://kramio-frontend-670239159166.us-central1.run.app/";
+
 type FAQ = {
   q: string;
   a: React.ReactNode;
@@ -5,23 +7,71 @@ type FAQ = {
 
 const faqs: FAQ[] = [
   {
-    q: "Is my data and are my interactions secure?",
+    q: "Do I need to provide my own AI API keys?",
     a: (
       <>
-        Kramio is designed for sensitive workflows. It uses security-first
-        patterns and controlled access so your context and activity are
-        protected. The platform supports Bring Your Own Key (BYOK), so you
-        retain control over model access.
+        No. Kramio provides managed access to leading AI models, so you can
+        start immediately without creating or configuring API keys.
       </>
     ),
   },
   {
-    q: "Do you store my API keys?",
+    q: "Is there a free trial?",
     a: (
       <>
-        Kramio supports BYOK. Keys are handled with an encryption-first approach
-        so plaintext keys are not stored or exposed in logs. You can rotate or
-        revoke keys at any time.
+        Yes. Kramio includes a{" "}
+        <span className="font-semibold text-neutral-200">3-day free trial</span>{" "}
+        and{" "}
+        <span className="font-semibold text-neutral-200">
+          no credit card is required
+        </span>
+        .
+      </>
+    ),
+  },
+  {
+    q: "Is my identity shared with AI model providers?",
+    a: (
+      <>
+        No.{" "}
+        <span className="font-semibold text-neutral-200">
+          Your identity is never shared with AI providers
+        </span>
+        . Kramio brokers model access on your behalf so providers do not receive
+        your personal account identity.
+      </>
+    ),
+  },
+  {
+    q: "What happens to personal or sensitive data in my documents?",
+    a: (
+      <>
+        Before requests are sent to AI models, Kramio removes personal
+        identifiers and sensitive metadata to minimize exposure. The model only
+        receives what is necessary to complete the task.
+      </>
+    ),
+  },
+  {
+    q: "Who is Kramio built for?",
+    a: (
+      <>
+        Kramio is built for prosumers and professionals who need structured,
+        repeatable AI workflows—across personal intelligence and role-based
+        suites such as medical, real estate, and sales.
+      </>
+    ),
+  },
+  {
+    q: "Which AI models does Kramio work with?",
+    a: (
+      <>
+        Kramio works with leading AI models such as{" "}
+        <span className="font-semibold text-neutral-200">Gemini</span>,{" "}
+        <span className="font-semibold text-neutral-200">ChatGPT</span>, and{" "}
+        <span className="font-semibold text-neutral-200">Grok</span>. Kramio
+        orchestrates models behind the scenes so you can focus on outcomes, not
+        configuration.
       </>
     ),
   },
@@ -29,86 +79,12 @@ const faqs: FAQ[] = [
     q: "How do I sign in?",
     a: (
       <>
-        Click <span className="font-semibold text-neutral-200">Sign In</span> and
+        Click{" "}
+        <span className="font-semibold text-neutral-200">Start free trial</span>{" "}
+        or{" "}
+        <span className="font-semibold text-neutral-200">Sign In</span>, then
         authenticate using Google (Gmail) SSO. Access is currently invite-only
         for beta users.
-      </>
-    ),
-  },
-  {
-    q: "How do I get API keys?",
-    a: (
-      <>
-        <p className="text-neutral-300">
-          You can generate API keys directly from the AI providers you choose to
-          use with Kramio:
-        </p>
-
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-neutral-300">
-          <li>
-            <span className="font-semibold text-neutral-200">
-              Google Gemini (Gemini 2.5 Pro)
-            </span>{" "}
-            —{" "}
-            <a
-              className="underline decoration-neutral-500 underline-offset-4 hover:text-white"
-              href="https://ai.google.dev/gemini-api/docs/api-key"
-              target="_blank"
-              rel="noreferrer"
-            >
-              get an API key from Google AI Studio
-            </a>
-            .
-          </li>
-          <li>
-            <span className="font-semibold text-neutral-200">
-              OpenAI (ChatGPT-4o)
-            </span>{" "}
-            —{" "}
-            <a
-              className="underline decoration-neutral-500 underline-offset-4 hover:text-white"
-              href="https://auth.openai.com/create-account"
-              target="_blank"
-              rel="noreferrer"
-            >
-              create an OpenAI account and generate an API key
-            </a>
-            .
-          </li>
-          <li>
-            <span className="font-semibold text-neutral-200">xAI (Grok-4)</span>{" "}
-            —{" "}
-            <a
-              className="underline decoration-neutral-500 underline-offset-4 hover:text-white"
-              href="https://x.ai/api"
-              target="_blank"
-              rel="noreferrer"
-            >
-              generate an API key from the xAI platform
-            </a>
-            .
-          </li>
-        </ul>
-
-        <p className="mt-4 text-neutral-300">
-          Once created, paste your API key(s) into{" "}
-          <span className="font-semibold text-neutral-200">
-            Kramio AI Settings (BYOK)
-          </span>{" "}
-          to enable your tiles. You only need{" "}
-          <span className="font-semibold text-neutral-200">one</span> model API
-          key to start experiencing Kramio.
-        </p>
-      </>
-    ),
-  },
-  {
-    q: "Which AI models do you support?",
-    a: (
-      <>
-        Kramio supports multiple AI providers through its orchestration layer,
-        including OpenAI, Google Gemini, and xAI, depending on
-        availability and your configured keys.
       </>
     ),
   },
@@ -117,10 +93,44 @@ const faqs: FAQ[] = [
 export default function FAQPage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
+      {/* Top Nav (same as Home) */}
+      <header className="border-b border-neutral-900/60">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <a href="/" className="flex items-center gap-4">
+            <img
+              src="/kramio-logo.png"
+              alt="Kramio logo"
+              className="h-16 w-auto"
+            />
+            <span className="text-2xl font-semibold tracking-tight">Kramio</span>
+          </a>
+
+          <nav className="hidden gap-8 text-sm text-neutral-300 md:flex">
+            <a className="hover:text-white" href="/">
+              Home
+            </a>
+            <a className="hover:text-white" href="/about">
+              About
+            </a>
+            <a className="hover:text-white" href="/faq">
+              FAQ
+            </a>
+          </nav>
+
+          <a
+            className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
+            href={APP_SIGNIN_URL}
+          >
+            Sign In
+          </a>
+        </div>
+      </header>
+
+      {/* Page content */}
       <div className="mx-auto max-w-5xl px-6 py-16">
         <h1 className="text-4xl font-semibold tracking-tight">FAQ</h1>
         <p className="mt-4 text-neutral-300">
-          Answers to common questions about security, access, and API keys.
+          Quick answers about trial access, privacy, and how Kramio works.
         </p>
 
         <div className="mt-10 space-y-4">
