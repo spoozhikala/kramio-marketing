@@ -20,7 +20,7 @@ const faqs: FAQ[] = [
     a: (
       <>
         Yes. Kramio includes a{" "}
-        <span className="font-semibold text-neutral-200">3-day free trial</span>{" "}
+        <span className="font-semibold text-neutral-200">7-day free trial</span>{" "}
         and{" "}
         <span className="font-semibold text-neutral-200">
           no credit card is required
@@ -80,9 +80,10 @@ const faqs: FAQ[] = [
     a: (
       <>
         Click{" "}
-        <span className="font-semibold text-neutral-200">Start free trial</span>{" "}
-        or{" "}
-        <span className="font-semibold text-neutral-200">Sign In</span>, then
+        <span className="font-semibold text-neutral-200">
+          Start 7-Day Free Trial
+        </span>{" "}
+        or <span className="font-semibold text-neutral-200">Sign In</span>, then
         authenticate using Google (Gmail) SSO. Access is currently invite-only
         for beta users.
       </>
@@ -93,7 +94,7 @@ const faqs: FAQ[] = [
 export default function FAQPage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
-      {/* Top Nav (same as Home) */}
+      {/* Top Nav */}
       <header className="border-b border-neutral-900/60">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <a href="/" className="flex items-center gap-4">
