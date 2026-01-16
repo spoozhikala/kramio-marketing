@@ -1,42 +1,107 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const APP_SIGNIN_URL = "https://kramio-frontend-670239159166.us-central1.run.app/";
 
-export default function AboutPage() {
-  return (
-    <main className="min-h-screen bg-neutral-950 text-neutral-100">
-      {/* Top Nav (same as Home) */}
-      <header className="border-b border-neutral-900/60">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <a href="/" className="flex items-center gap-4">
-            <img
-              src="/kramio-logo.png"
-              alt="Kramio logo"
-              className="h-16 w-auto"
-            />
-            <span className="text-2xl font-semibold tracking-tight">Kramio</span>
-          </a>
+function TopNav() {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
-          <nav className="hidden gap-8 text-sm text-neutral-300 md:flex">
-            <a className="hover:text-white" href="/">
-              Home
-            </a>
-            <a className="hover:text-white" href="/about">
-              About
-            </a>
-            <a className="hover:text-white" href="/faq">
-              FAQ
-            </a>
-          </nav>
+  useEffect(() => {
+    function onDocClick(e: MouseEvent) {
+      if (!open) return;
+      const target = e.target as Node;
+      if (menuRef.current && !menuRef.current.contains(target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, [open]);
+
+  return (
+    <header className="border-b border-neutral-900/60">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <a href="/" className="flex items-center gap-4">
+          <img src="/kramio-logo.png" alt="Kramio logo" className="h-16 w-auto" />
+          <span className="text-2xl font-semibold tracking-tight">Kramio</span>
+        </a>
+
+        <nav className="hidden gap-8 text-sm text-neutral-300 md:flex">
+          <a className="hover:text-white" href="/">
+            Home
+          </a>
+          <a className="hover:text-white" href="/about">
+            About
+          </a>
+          <a className="hover:text-white" href="/faq">
+            FAQ
+          </a>
+        </nav>
+
+        <div className="flex items-center gap-3" ref={menuRef}>
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950/40 px-3 py-2 text-sm font-semibold text-neutral-100 hover:bg-neutral-900 md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label="Open menu"
+          >
+            Menu
+          </button>
 
           <a
-            className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
+            className="hidden rounded-xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-200 md:inline-flex"
             href={APP_SIGNIN_URL}
           >
             Sign In
           </a>
-        </div>
-      </header>
 
-      {/* Page content */}
+          {open && (
+            <div className="absolute right-6 top-[76px] z-50 w-56 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950 shadow-lg md:hidden">
+              <a
+                className="block px-4 py-3 text-sm text-neutral-100 hover:bg-neutral-900"
+                href="/"
+                onClick={() => setOpen(false)}
+              >
+                Home
+              </a>
+              <a
+                className="block px-4 py-3 text-sm text-neutral-100 hover:bg-neutral-900"
+                href="/about"
+                onClick={() => setOpen(false)}
+              >
+                About
+              </a>
+              <a
+                className="block px-4 py-3 text-sm text-neutral-100 hover:bg-neutral-900"
+                href="/faq"
+                onClick={() => setOpen(false)}
+              >
+                FAQ
+              </a>
+              <div className="h-px bg-neutral-800" />
+              <a
+                className="block px-4 py-3 text-sm font-semibold text-neutral-100 hover:bg-neutral-900"
+                href={APP_SIGNIN_URL}
+                onClick={() => setOpen(false)}
+              >
+                Start Free Trial / Sign In
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default function AboutPage() {
+  return (
+    <main className="min-h-screen bg-neutral-950 text-neutral-100">
+      <TopNav />
+
       <div className="mx-auto max-w-5xl px-6 py-16">
         <h1 className="text-4xl font-semibold tracking-tight">About Kramio</h1>
 
@@ -61,7 +126,6 @@ export default function AboutPage() {
           preserved across sessions, without repeatedly rebuilding the setup.
         </p>
 
-        {/* Investor support */}
         <p className="mt-4 text-neutral-300">
           <span className="font-semibold text-neutral-200">
             Kramio is supported by experienced angel investors from the Silicon
@@ -71,7 +135,6 @@ export default function AboutPage() {
           technology platforms.
         </p>
 
-        {/* Expanded philosophy section */}
         <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
           <h2 className="text-xl font-semibold">
             The shift toward generated, on-demand software

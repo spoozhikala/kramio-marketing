@@ -1,43 +1,113 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const APP_SIGNIN_URL = "https://kramio-frontend-670239159166.us-central1.run.app/";
 
-export default function HomePage() {
+function TopNav() {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    function onDocClick(e: MouseEvent) {
+      if (!open) return;
+      const target = e.target as Node;
+      if (menuRef.current && !menuRef.current.contains(target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, [open]);
+
   return (
-    <main className="min-h-screen bg-neutral-950 text-neutral-100">
-      {/* Top Nav */}
-      <header className="border-b border-neutral-900/60">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          {/* Logo + Wordmark */}
-          <a href="/" className="flex items-center gap-4">
-            <img
-              src="/kramio-logo.png"
-              alt="Kramio logo"
-              className="h-16 w-auto"
-            />
-            <span className="text-2xl font-semibold tracking-tight">Kramio</span>
+    <header className="border-b border-neutral-900/60">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        {/* Logo + Wordmark */}
+        <a href="/" className="flex items-center gap-4">
+          <img src="/kramio-logo.png" alt="Kramio logo" className="h-16 w-auto" />
+          <span className="text-2xl font-semibold tracking-tight">Kramio</span>
+        </a>
+
+        {/* Desktop Nav */}
+        <nav className="hidden gap-8 text-sm text-neutral-300 md:flex">
+          <a className="hover:text-white" href="/">
+            Home
           </a>
+          <a className="hover:text-white" href="/about">
+            About
+          </a>
+          <a className="hover:text-white" href="/faq">
+            FAQ
+          </a>
+        </nav>
 
-          {/* Navigation */}
-          <nav className="hidden gap-8 text-sm text-neutral-300 md:flex">
-            <a className="hover:text-white" href="/">
-              Home
-            </a>
-            <a className="hover:text-white" href="/about">
-              About
-            </a>
-            <a className="hover:text-white" href="/faq">
-              FAQ
-            </a>
-          </nav>
+        {/* Right side actions */}
+        <div className="flex items-center gap-3" ref={menuRef}>
+          {/* Mobile Menu button */}
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950/40 px-3 py-2 text-sm font-semibold text-neutral-100 hover:bg-neutral-900 md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label="Open menu"
+          >
+            Menu
+          </button>
 
-          {/* Sign In */}
+          {/* Desktop Sign In */}
           <a
-            className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
+            className="hidden rounded-xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-200 md:inline-flex"
             href={APP_SIGNIN_URL}
           >
             Sign In
           </a>
+
+          {/* Mobile dropdown */}
+          {open && (
+            <div className="absolute right-6 top-[76px] z-50 w-56 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950 shadow-lg md:hidden">
+              <a
+                className="block px-4 py-3 text-sm text-neutral-100 hover:bg-neutral-900"
+                href="/"
+                onClick={() => setOpen(false)}
+              >
+                Home
+              </a>
+              <a
+                className="block px-4 py-3 text-sm text-neutral-100 hover:bg-neutral-900"
+                href="/about"
+                onClick={() => setOpen(false)}
+              >
+                About
+              </a>
+              <a
+                className="block px-4 py-3 text-sm text-neutral-100 hover:bg-neutral-900"
+                href="/faq"
+                onClick={() => setOpen(false)}
+              >
+                FAQ
+              </a>
+              <div className="h-px bg-neutral-800" />
+              <a
+                className="block px-4 py-3 text-sm font-semibold text-neutral-100 hover:bg-neutral-900"
+                href={APP_SIGNIN_URL}
+                onClick={() => setOpen(false)}
+              >
+                Start Free Trial / Sign In
+              </a>
+            </div>
+          )}
         </div>
-      </header>
+      </div>
+    </header>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <main className="min-h-screen bg-neutral-950 text-neutral-100">
+      <TopNav />
 
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-6 py-16">
@@ -91,30 +161,20 @@ export default function HomePage() {
                 Explore workspaces
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
-                <a
-                  href="#workspaces"
-                  className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
-                >
-                  Personal Intelligence
-                </a>
-                <a
-                  href="#workspaces"
-                  className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
-                >
-                  Real Estate Suite
-                </a>
-                <a
-                  href="#workspaces"
-                  className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
-                >
-                  Sales Professional
-                </a>
-                <a
-                  href="#workspaces"
-                  className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
-                >
-                  Medical Specialized
-                </a>
+                {[
+                  "Personal Intelligence",
+                  "Real Estate Suite",
+                  "Sales Professional",
+                  "Medical Specialized",
+                ].map((label) => (
+                  <a
+                    key={label}
+                    href="#workspaces"
+                    className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
+                  >
+                    {label}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -145,7 +205,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Differentiator section (moved higher and explicit) */}
+        {/* Differentiator */}
         <div className="mt-12 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
           <h2 className="text-2xl font-semibold tracking-tight">
             Don’t Just Generate. Compare.
@@ -185,7 +245,6 @@ export default function HomePage() {
           </div>
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {/* Personal Intelligence */}
             <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
               <h3 className="text-lg font-semibold">Personal Intelligence</h3>
               <p className="mt-2 text-neutral-300">
@@ -204,7 +263,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Real Estate Suite */}
             <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
               <h3 className="text-lg font-semibold">Real Estate Suite</h3>
               <p className="mt-2 text-neutral-300">
@@ -224,7 +282,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Sales Professional */}
             <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
               <h3 className="text-lg font-semibold">Sales Professional</h3>
               <p className="mt-2 text-neutral-300">
@@ -244,7 +301,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Medical Specialized */}
             <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
               <h3 className="text-lg font-semibold">Medical Specialized</h3>
               <p className="mt-2 text-neutral-300">
@@ -261,26 +317,6 @@ export default function HomePage() {
                   Medication &amp; Interaction Analysis
                 </span>
               </div>
-            </div>
-          </div>
-
-          {/* Reinforcing CTA */}
-          <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h3 className="text-lg font-semibold">
-                  Ready to upgrade your workflow?
-                </h3>
-                <p className="mt-2 text-neutral-300">
-                  Start your 7-day free trial. No credit card required.
-                </p>
-              </div>
-              <a
-                className="inline-flex w-fit items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
-                href={APP_SIGNIN_URL}
-              >
-                Start Free Trial
-              </a>
             </div>
           </div>
         </div>
