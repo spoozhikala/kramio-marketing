@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 const APP_SIGNIN_URL =
   "https://kramio-frontend-670239159166.us-central1.run.app/";
 
 type FAQ = {
   q: string;
-  a: React.ReactNode;
+  a: ReactNode;
 };
 
 function TopNav() {
@@ -113,14 +113,65 @@ const faqs: FAQ[] = [
     a: (
       <>
         Yes. Kramio includes a{" "}
-        <span className="font-semibold text-neutral-200">
-          7-day free trial
-        </span>{" "}
+        <span className="font-semibold text-neutral-200">7-day free trial</span>{" "}
         with{" "}
         <span className="font-semibold text-neutral-200">
           no credit card required
         </span>
         .
+      </>
+    ),
+  },
+  {
+    q: "Is Kramio for personal use, professional use, or both?",
+    a: (
+      <>
+        Both. Kramio is designed for{" "}
+        <span className="font-semibold text-neutral-200">
+          real decisions in life and work
+        </span>
+        . Many users start with personal tiles (health, home, cashflow) and then
+        add professional suites (real estate, sales, healthcare workflows) when
+        needed.
+      </>
+    ),
+  },
+  {
+    q: "What is the Command Deck / Workflows?",
+    a: (
+      <>
+        The Command Deck is where you run{" "}
+        <span className="font-semibold text-neutral-200">
+          pre-built, expert-designed workflows
+        </span>{" "}
+        instead of writing prompts from scratch. Pick a workflow (e.g., “Review a
+        Lease,” “Create a Listing,” “Explain Lab Results”), provide your input,
+        and Kramio generates structured outputs you can act on.
+      </>
+    ),
+  },
+  {
+    q: "What kind of input can I use (text, files, images)?",
+    a: (
+      <>
+        You can use{" "}
+        <span className="font-semibold text-neutral-200">
+          whatever you already have
+        </span>
+        : a question, pasted text, notes, documents, photos, screenshots, or
+        images. Workflows are designed to work with real-world inputs—not just
+        perfect prompts.
+      </>
+    ),
+  },
+  {
+    q: "Do I need to be good at prompting or “prompt engineering”?",
+    a: (
+      <>
+        No. Kramio is built for{" "}
+        <span className="font-semibold text-neutral-200">click-to-execute</span>{" "}
+        workflows. Tiles come with system-level instructions so you can focus on
+        your situation—not on how to phrase the request.
       </>
     ),
   },
@@ -147,14 +198,31 @@ const faqs: FAQ[] = [
     ),
   },
   {
+    q: "How does Kramio protect sensitive information?",
+    a: (
+      <>
+        Kramio applies{" "}
+        <span className="font-semibold text-neutral-200">
+          privacy-first redaction
+        </span>{" "}
+        to remove personal identifiers before requests are sent to AI models.
+        Only the minimum required context is provided to complete the workflow.
+      </>
+    ),
+  },
+  {
     q: "Who can access my data?",
     a: (
       <>
         Only Kramio’s application itself can access your data.
         <br />
         <br />
-        Your information is stored in an encrypted database and is accessed only
-        by a secure service account used to operate the platform.
+        Your information is stored in an{" "}
+        <span className="font-semibold text-neutral-200">
+          encrypted database
+        </span>{" "}
+        and is accessed only by a secure service account used to operate the
+        platform.
         <br />
         <br />
         Even Kramio system administrators cannot read your personal data. In the
@@ -164,45 +232,52 @@ const faqs: FAQ[] = [
     ),
   },
   {
-    q: "What happens to sensitive data or personal information?",
+    q: "Why does Kramio compare multiple AI models?",
     a: (
       <>
-        Kramio removes personal identifiers and sensitive metadata before
-        requests are sent to AI models. Only the minimum required context is
-        provided to complete the task.
-      </>
-    ),
-  },
-  {
-    q: "Can I use Kramio without uploading documents?",
-    a: (
-      <>
-        Yes. You can ask questions, explore scenarios, and work through problems
-        without uploading any files. Documents and images are optional and help
-        accelerate deeper analysis when needed.
-      </>
-    ),
-  },
-  {
-    q: "Which AI models does Kramio support?",
-    a: (
-      <>
-        Kramio works with leading AI models including{" "}
+        Because one model isn’t enough when accuracy matters. Kramio can run the
+        same workflow through{" "}
         <span className="font-semibold text-neutral-200">Gemini</span>,{" "}
         <span className="font-semibold text-neutral-200">ChatGPT-4o</span>, and{" "}
-        <span className="font-semibold text-neutral-200">Grok</span>. You can
-        evaluate responses side-by-side and continue with the model—or models—
-        that are on the right track.
+        <span className="font-semibold text-neutral-200">Grok</span> so you can
+        compare perspectives side-by-side and decide with confidence.
       </>
     ),
   },
   {
-    q: "Who is Kramio built for?",
+    q: "Does Kramio replace all the other software I use?",
     a: (
       <>
-        Kramio is built for individuals and professionals who want structured,
-        repeatable AI workflows—across personal intelligence and role-based
-        suites such as real estate, sales, and medical research.
+        Kramio can reduce tool sprawl by combining execution, verification, and
+        privacy in one place. The bigger value is{" "}
+        <span className="font-semibold text-neutral-200">
+          repeatable, high-quality outputs
+        </span>{" "}
+        you can rely on—especially for client-facing or high-stakes decisions.
+      </>
+    ),
+  },
+  {
+    q: "Can I use Kramio without documents or images?",
+    a: (
+      <>
+        Yes. You can run workflows using a question or pasted context only.
+        Documents and images are optional—helpful when you want deeper analysis
+        or to avoid retyping.
+      </>
+    ),
+  },
+  {
+    q: "Is Kramio appropriate for medical use?",
+    a: (
+      <>
+        Kramio can help organize information, summarize research, and analyze
+        medication interactions. It is{" "}
+        <span className="font-semibold text-neutral-200">
+          not a substitute for professional medical judgment
+        </span>
+        . Always consult a qualified clinician for diagnosis or treatment
+        decisions.
       </>
     ),
   },
@@ -230,7 +305,8 @@ export default function FAQPage() {
       <div className="mx-auto max-w-5xl px-6 py-16">
         <h1 className="text-4xl font-semibold tracking-tight">FAQ</h1>
         <p className="mt-4 text-neutral-300">
-          Quick answers about access, privacy, and how Kramio works.
+          Quick answers about workflows, privacy, and how Kramio works for life
+          and work.
         </p>
 
         <div className="mt-10 space-y-4">

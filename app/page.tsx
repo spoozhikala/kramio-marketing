@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const APP_SIGNIN_URL = "https://kramio-frontend-670239159166.us-central1.run.app/";
+const APP_SIGNIN_URL =
+  "https://kramio-frontend-670239159166.us-central1.run.app/";
 
 function TopNav() {
   const [open, setOpen] = useState(false);
@@ -26,7 +27,11 @@ function TopNav() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         {/* Logo + Wordmark */}
         <a href="/" className="flex items-center gap-4">
-          <img src="/kramio-logo.png" alt="Kramio logo" className="h-16 w-auto" />
+          <img
+            src="/kramio-logo.png"
+            alt="Kramio logo"
+            className="h-16 w-auto"
+          />
           <span className="text-2xl font-semibold tracking-tight">Kramio</span>
         </a>
 
@@ -115,13 +120,15 @@ export default function HomePage() {
           {/* Left */}
           <div className="md:col-span-8">
             <h1 className="text-5xl font-semibold tracking-tight leading-[1.05]">
-              Your Secure AI Workspace for Work and Life.
+              Stop Chatting. Start Executing.
             </h1>
 
             <p className="mt-6 text-lg text-neutral-300">
-              Whether you’re in your truck, at the job site, in the office, or
-              at home, Kramio applies your context and delivers expert-grade
-              answers wherever the work happens.
+              Kramio is your Command Deck for real decisions in{" "}
+              <span className="font-semibold text-neutral-200">life</span> and{" "}
+              <span className="font-semibold text-neutral-200">work</span>.
+              Run expert-grade Workflows that turn what you already have—questions,
+              notes, documents, photos, screenshots—into results in seconds.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -129,13 +136,13 @@ export default function HomePage() {
                 className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
                 href={APP_SIGNIN_URL}
               >
-                Start 7-Day Free Trial
+                Launch Command Deck
               </a>
               <a
                 className="rounded-xl border border-neutral-700 px-5 py-3 text-sm font-semibold text-neutral-100 hover:bg-neutral-900"
-                href="#workspaces"
+                href="#workflows"
               >
-                Explore Workspaces
+                View Available Workflows
               </a>
             </div>
 
@@ -143,7 +150,7 @@ export default function HomePage() {
             <div className="mt-6 flex flex-col gap-2 text-sm text-neutral-300 sm:flex-row sm:items-center sm:gap-6">
               <div className="flex items-center gap-2">
                 <span className="text-neutral-200">✓</span>
-                <span>No credit card required</span>
+                <span>7-day free trial (no credit card)</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-neutral-200">✓</span>
@@ -151,25 +158,25 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-neutral-200">✓</span>
-                <span>Built for mobile, desktop, and on-the-go work</span>
+                <span>Built for mobile, desktop, and on-the-go</span>
               </div>
             </div>
 
-            {/* Workspace quick-jump chips */}
+            {/* Two-lane quick-jump chips */}
             <div className="mt-6">
               <div className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
-                Explore workspaces
+                Explore by outcome
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {[
-                  "Personal Intelligence",
+                  "Life Intelligence (Health · Home · Cashflow)",
                   "Real Estate Suite",
-                  "Sales Professional",
-                  "Medical Specialized",
+                  "Sales Suite",
+                  "Healthcare Workflows",
                 ].map((label) => (
                   <a
                     key={label}
-                    href="#workspaces"
+                    href="#workflows"
                     className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-900"
                   >
                     {label}
@@ -179,191 +186,191 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right rail */}
+          {/* Right rail: product “secret weapon” */}
           <div className="md:col-span-4">
             <div className="flex gap-5 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
               <div className="w-[3px] rounded-full bg-neutral-700" />
               <div>
                 <div className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
-                  Compare leading AI models
+                  The Command Deck
                 </div>
                 <div className="mt-2 text-base font-semibold text-neutral-100">
-                  Gemini · ChatGPT-4o · Grok
+                  Click a Workflow. Get a Result.
                 </div>
                 <p className="mt-3 text-sm text-neutral-300">
-                  Evaluate multiple answers side-by-side, then continue with the
-                  model—or models—that are on the right track.
+                  No prompt engineering. Choose a workflow like{" "}
+                  <span className="font-semibold text-neutral-200">
+                    “Review Lease,” “Explain Lab Results,” “Cashflow Audit,”
+                  </span>{" "}
+                  or <span className="font-semibold text-neutral-200">“Listing Generator.”</span>
                 </p>
                 <p className="mt-3 text-sm text-neutral-300">
+                  Bring anything:{" "}
                   <span className="font-semibold text-neutral-200">
-                    Your identity is never shared
-                  </span>{" "}
-                  with AI providers.
+                    text, notes, documents, photos, screenshots
+                  </span>
+                  .
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Differentiator */}
-        <div className="mt-12 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            Don’t Just Generate. Compare.
-          </h2>
-          <p className="mt-3 text-neutral-300">
-            Most AI tools give you a single answer. Kramio lets you evaluate
-            multiple perspectives before you commit.
-          </p>
-          <p className="mt-3 text-neutral-300">
-            Run your questions, notes, or documents through{" "}
-            <span className="font-semibold text-neutral-200">
-              Gemini, ChatGPT-4o, and Grok
-            </span>{" "}
-            simultaneously. View responses side-by-side to cross-reference
-            insights, identify discrepancies, and choose the most reliable path
-            forward.
-          </p>
-          <p className="mt-3 text-sm text-neutral-300">
-            <span className="font-semibold text-neutral-200">
-              Your identity is never shared
-            </span>{" "}
-            with AI providers.
-          </p>
-        </div>
-
-        {/* Suites Grid */}
-        <div id="workspaces" className="mt-14 scroll-mt-24">
+        {/* Workflows / Suites */}
+        <div id="workflows" className="mt-14 scroll-mt-24">
           <div className="max-w-3xl">
             <h2 className="text-2xl font-semibold tracking-tight">
-              Explore workspaces
+              Your Intelligence Suite. Organized by Role.
             </h2>
             <p className="mt-3 text-neutral-300">
-              From planning a home project on the couch to reviewing a lease in
-              the field, Kramio keeps your intelligence with you—organized by
-              how you live and work.
+              Kramio is built for people who make real decisions—at home, on the
+              move, and in the field. Start with Life Intelligence, then add a
+              Professional Suite when you need it.
             </p>
           </div>
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {/* Life Intelligence */}
             <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-              <h3 className="text-lg font-semibold">Personal Intelligence</h3>
+              <h3 className="text-lg font-semibold">Life Intelligence</h3>
               <p className="mt-2 text-neutral-300">
-                One workspace for your life.
+                For health, home, and money—when clarity matters.
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Home Improvement
-                </span>
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Cashflow Analysis
-                </span>
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Health &amp; Fitness
-                </span>
+
+              <div className="mt-4 text-sm font-semibold uppercase tracking-wide text-neutral-400">
+                Top workflows
+              </div>
+              <div className="mt-3 space-y-2 text-neutral-200">
+                <div>⚡ Explain Lab Results (photo, PDF, or pasted text)</div>
+                <div>⚡ Medication & Interaction Check</div>
+                <div>⚡ Cashflow Audit (spot leaks and plan ahead)</div>
+                <div>⚡ Renovation Estimator (scope, options, budget)</div>
               </div>
             </div>
 
+            {/* Real Estate */}
             <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
               <h3 className="text-lg font-semibold">Real Estate Suite</h3>
               <p className="mt-2 text-neutral-300">
-                Clarity for agents, investors, and advisors—on site or on the
-                move.
+                For agents and investors—client-ready outputs in minutes.
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Lease Contract Review
-                </span>
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Property Valuation
-                </span>
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Listing Generator
-                </span>
+
+              <div className="mt-4 text-sm font-semibold uppercase tracking-wide text-neutral-400">
+                Top workflows
+              </div>
+              <div className="mt-3 space-y-2 text-neutral-200">
+                <div>⚡ Listing Generator (photos + notes → marketing copy)</div>
+                <div>⚡ Lease Review (spot liabilities fast)</div>
+                <div>⚡ Valuation (data-backed pricing logic)</div>
               </div>
             </div>
 
+            {/* Sales */}
             <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-              <h3 className="text-lg font-semibold">Sales Professional</h3>
+              <h3 className="text-lg font-semibold">Sales Suite</h3>
               <p className="mt-2 text-neutral-300">
-                Support for consultants, sellers, and deal-makers—wherever
-                conversations happen.
+                For deal-makers—move faster from research to close.
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Client Research
-                </span>
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Proposal Generation
-                </span>
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Deal Strategy
-                </span>
+
+              <div className="mt-4 text-sm font-semibold uppercase tracking-wide text-neutral-400">
+                Top workflows
+              </div>
+              <div className="mt-3 space-y-2 text-neutral-200">
+                <div>⚡ Client Research (account + context → brief)</div>
+                <div>⚡ Proposal Rewriter (ROI-focused messaging)</div>
+                <div>⚡ Deal Strategy (objections → next steps)</div>
               </div>
             </div>
 
+            {/* Healthcare (softened) */}
             <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-              <h3 className="text-lg font-semibold">Medical Specialized</h3>
+              <h3 className="text-lg font-semibold">Healthcare Workflows</h3>
               <p className="mt-2 text-neutral-300">
-                Secure, evidence-based decision support for clinical workflows.
+                For clinical support and research—organized, evidence-aware summaries.
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Clinical Decision Support
-                </span>
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Clinical Research Assistant
-                </span>
-                <span className="rounded-full border border-neutral-700 bg-neutral-950/40 px-3 py-1 text-sm text-neutral-200">
-                  Medication &amp; Interaction Analysis
-                </span>
+
+              <div className="mt-4 text-sm font-semibold uppercase tracking-wide text-neutral-400">
+                Top workflows
+              </div>
+              <div className="mt-3 space-y-2 text-neutral-200">
+                <div>⚡ Clinical Research Assistant (papers → summary + takeaways)</div>
+                <div>⚡ Medication & Interaction Analysis</div>
+                <div>⚡ Clinical Decision Support (assistive, not diagnostic)</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Capabilities */}
+        {/* Why (replace “Context Engineering”) */}
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-            <h3 className="text-lg font-semibold">Context Engineering</h3>
+            <h3 className="text-lg font-semibold">No Prompt Engineering Required</h3>
             <p className="mt-2 text-neutral-300">
-              Bring your context once—preferences, constraints, notes, or
-              documents. Every session starts informed, without re-explaining
-              how you think or work.
+              Workflows come pre-loaded with expert instructions. You don’t need
+              to “teach” the AI your role. Bring your input and click execute.
             </p>
           </div>
 
           <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
             <h3 className="text-lg font-semibold">Privacy-First Orchestration</h3>
             <p className="mt-2 text-neutral-300">
-              Kramio manages access to leading AI models while keeping your
-              identity private. Personal identifiers are removed before requests
-              are processed.
+              Kramio manages model access while protecting you. Personal identifiers
+              are stripped before requests are sent to AI providers.
             </p>
           </div>
 
           <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-            <h3 className="text-lg font-semibold">Multi-Model Intelligence</h3>
+            <h3 className="text-lg font-semibold">Built for the Job Site</h3>
             <p className="mt-2 text-neutral-300">
-              Evaluate multiple AI engines in one workspace, then continue with
-              the model—or combination—that’s on the right track.
+              Whether you’re in a truck, at a showing, in a hallway, or on the couch,
+              Kramio is designed for mobile-first execution.
             </p>
           </div>
         </div>
 
-        {/* Philosophy */}
+        {/* Verification (compare models) moved down */}
         <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
-          <h3 className="text-lg font-semibold">Generated, on-demand intelligence</h3>
-          <p className="mt-2 text-neutral-300">
-            The future of software is shifting away from static applications
-            toward systems that generate solutions on demand. Instead of waiting
-            to get back to a desk, intelligent workflows assemble dynamically—
-            based on the problem, the context, and the moment.
-          </p>
+          <h2 className="text-2xl font-semibold tracking-tight">
+            The Only AI That Checks Its Work.
+          </h2>
           <p className="mt-3 text-neutral-300">
-            Kramio is built for that future. Your knowledge becomes the input.
-            Intelligence is generated when you need it. Continuity replaces
-            repetition.
+            One model isn’t enough when accuracy matters. Run the same workflow through{" "}
+            <span className="font-semibold text-neutral-200">
+              Gemini, ChatGPT-4o, and Grok
+            </span>{" "}
+            simultaneously. Compare perspectives side-by-side to verify reasoning and act
+            with confidence.
           </p>
+          <p className="mt-3 text-sm text-neutral-300">
+            <span className="font-semibold text-neutral-200">Your identity is never shared</span>{" "}
+            with AI providers. No API keys required.
+          </p>
+        </div>
+
+        {/* Future vision (keep, but tighten) */}
+        <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+          <h3 className="text-lg font-semibold">On-demand intelligence</h3>
+          <p className="mt-2 text-neutral-300">
+            The future of software is shifting from static apps to systems that generate
+            solutions on demand. Kramio turns real-world inputs into structured outputs—
+            when you need them—without waiting to get back to a desk.
+          </p>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 md:flex-row md:items-center">
+          <div>
+            <div className="text-lg font-semibold">Ready to run your first workflow?</div>
+            <div className="mt-1 text-sm text-neutral-300">
+              Start with Life Intelligence, then add a Professional Suite when needed.
+            </div>
+          </div>
+          <a
+            className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
+            href={APP_SIGNIN_URL}
+          >
+            Start Free Trial / Sign In
+          </a>
         </div>
       </section>
 

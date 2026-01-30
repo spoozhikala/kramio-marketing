@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const APP_SIGNIN_URL = "https://kramio-frontend-670239159166.us-central1.run.app/";
+const APP_SIGNIN_URL =
+  "https://kramio-frontend-670239159166.us-central1.run.app/";
 
 function TopNav() {
   const [open, setOpen] = useState(false);
@@ -24,7 +25,11 @@ function TopNav() {
     <header className="border-b border-neutral-900/60">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <a href="/" className="flex items-center gap-4">
-          <img src="/kramio-logo.png" alt="Kramio logo" className="h-16 w-auto" />
+          <img
+            src="/kramio-logo.png"
+            alt="Kramio logo"
+            className="h-16 w-auto"
+          />
           <span className="text-2xl font-semibold tracking-tight">Kramio</span>
         </a>
 
@@ -106,62 +111,118 @@ export default function AboutPage() {
         <h1 className="text-4xl font-semibold tracking-tight">About Kramio</h1>
 
         <p className="mt-6 text-lg text-neutral-300">
-          Kramio is built by professionals who have designed and rolled out
-          innovative technology solutions across consumer products, SMB
-          platforms, and enterprise systems—often in environments with strict
-          privacy, security, and regulatory requirements.
+          Kramio is a secure execution workspace for real decisions in{" "}
+          <span className="font-semibold text-neutral-200">life</span> and{" "}
+          <span className="font-semibold text-neutral-200">work</span>. Instead
+          of “chatting with AI,” you run pre-built{" "}
+          <span className="font-semibold text-neutral-200">Workflows</span> from
+          a Command Deck—designed to turn what you already have into results.
         </p>
 
         <p className="mt-4 text-neutral-300">
-          The team behind Kramio has deep experience implementing
-          security-by-design architectures, data governance frameworks, and
-          privacy-aligned workflows across geographies and regulated domains.
-          Kramio exists because modern AI is powerful, but most tools are not
-          structured, governed, or safe enough for serious work.
+          Kramio is built for people who don’t have time to prompt-engineer:
+          real estate agents, sales professionals, clinicians, and busy
+          individuals (including many 55+ users) who need clarity on health,
+          home, and money.
         </p>
 
-        <p className="mt-4 text-neutral-300">
-          Our goal is to make AI useful, controllable, and trustworthy for
-          prosumers and professionals alike—so your knowledge and context are
-          preserved across sessions, without repeatedly rebuilding the setup.
+        <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+          <h2 className="text-xl font-semibold">What makes Kramio different</h2>
+
+          <ul className="mt-4 space-y-3 text-neutral-300">
+            <li>
+              <span className="font-semibold text-neutral-200">
+                Workflows, not prompts:
+              </span>{" "}
+              Kramio is designed for click-to-execute outcomes. You choose a
+              workflow (e.g., “Review Lease,” “Explain Lab Results,” “Cashflow
+              Audit”), add your input, and get a structured result.
+            </li>
+            <li>
+              <span className="font-semibold text-neutral-200">
+                Bring anything:
+              </span>{" "}
+              questions, pasted text, notes, documents, photos, and screenshots.
+              Real work rarely starts with perfect prompts.
+            </li>
+            <li>
+              <span className="font-semibold text-neutral-200">
+                Verification when accuracy matters:
+              </span>{" "}
+              Kramio can run the same workflow across multiple leading AI models
+              so you can compare reasoning side-by-side and choose the most
+              reliable path forward.
+            </li>
+            <li>
+              <span className="font-semibold text-neutral-200">
+                Privacy by design:
+              </span>{" "}
+              personal identifiers are stripped before requests reach AI
+              providers, and your identity is not shared with them.
+            </li>
+            <li>
+              <span className="font-semibold text-neutral-200">
+                Data safety you can understand:
+              </span>{" "}
+              your information is stored encrypted and accessed only by the
+              application service account used to run Kramio—not by people.
+            </li>
+          </ul>
+        </div>
+
+        <p className="mt-10 text-neutral-300">
+          The team behind Kramio has designed and deployed technology platforms
+          across consumer products, SMB systems, and enterprise environments—
+          often with strict privacy, security, and regulatory requirements. We
+          built Kramio because modern AI is powerful, but most tools are not
+          structured or governed enough for serious decisions.
         </p>
 
         <p className="mt-4 text-neutral-300">
           <span className="font-semibold text-neutral-200">
-            Kramio is supported by experienced angel investors from the Silicon
-            Valley technology ecosystem
-          </span>
-          , who bring decades of experience building, scaling, and operating
-          technology platforms.
+            Kramio is backed by experienced angel investors
+          </span>{" "}
+          with deep operational experience building and scaling technology
+          products.
         </p>
 
         <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
           <h2 className="text-xl font-semibold">
-            The shift toward generated, on-demand software
+            The shift toward on-demand, generated software
           </h2>
 
           <p className="mt-3 text-neutral-300">
             A major shift is underway: software is moving from static,
             pre-written applications toward systems that generate solutions on
-            demand. Instead of installing an app designed years ago, users
+            demand. Instead of hunting across tools, templates, and tabs, people
             increasingly expect intelligent software to assemble workflows in
-            real time—based on the problem, the context, and the desired outcome.
+            real time—based on the problem, the context, and the desired
+            outcome.
           </p>
 
           <p className="mt-3 text-neutral-300">
-            Technology leaders have described this direction as a future where
-            AI-driven systems dynamically assemble solutions through coordinated
-            models and services. In this world, software becomes more personal,
-            situational, and adaptive—generated when needed and reshaped as the
-            task evolves.
+            Kramio is built for that future. Workflows bring structure to AI so
+            outputs are more consistent and actionable. Verification reduces the
+            risk of relying on a single model. Privacy is enforced by default.
+            And your workspace preserves continuity—so you don’t restart from
+            scratch every session.
           </p>
+        </div>
 
-          <p className="mt-3 text-neutral-300">
-            Kramio is built for that future. Work is organized into
-            context-aware tiles, privacy is enforced by default, and multiple
-            models can be evaluated in parallel—so high-quality outputs are
-            generated on demand, with continuity and control.
-          </p>
+        <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 md:flex-row md:items-center">
+          <div>
+            <div className="text-lg font-semibold">Try Kramio (Beta)</div>
+            <div className="mt-1 text-sm text-neutral-300">
+              Start with Life Intelligence, then add a Professional Suite when
+              needed. Invite-only during beta.
+            </div>
+          </div>
+          <a
+            className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200"
+            href={APP_SIGNIN_URL}
+          >
+            Start Free Trial / Sign In
+          </a>
         </div>
 
         <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
